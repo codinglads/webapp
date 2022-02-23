@@ -232,4 +232,4 @@ _Pvt_Extensions
 .fake/
 
 # Database Connection
-DatabaseConnection.cs
+DatabaseConnection.txt
