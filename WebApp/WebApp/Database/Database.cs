@@ -1,16 +1,25 @@
 ﻿using System.Data.SqlClient;
+using WebApp.Database.Tables;
 
 namespace WebApp.Database
 {
     public class Database
     {
         public SqlConnection Connection;
+        public List<Table> Tables;
 
         public Database()
         {
             Connection = DatabaseConnection.GetConnection();
+            Tables = new List<Table>()
+            {
+                new A_Accounts()
+
+            };
         }
 
+        // Select statement grabs data from the database by taking in the select
+        // query string as well as the column indexs to grab from
         public List<Dictionary<int, string>> Select(string select_string, int[] columns)
         {
             Connection.Open();
@@ -34,6 +43,17 @@ namespace WebApp.Database
             Connection.Close();
 
             return data;
+        }
+    
+        public void BuildTables()
+        {
+            Connection.Open();
+
+            foreach(Table table in Tables)
+            {
+
+            }
+            Connection.Close();
         }
     }
 }
