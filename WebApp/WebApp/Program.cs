@@ -1,3 +1,13 @@
+using WebApp.Database;
+
+#region Database Building
+
+Database db = new Database();
+db.InitializeTables();
+db.BuildTables();
+
+#endregion
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

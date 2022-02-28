@@ -1,4 +1,5 @@
 ﻿using System.Data.SqlClient;
+using System.Text;
 using WebApp.Database.Tables;
 
 namespace WebApp.Database
@@ -44,16 +45,48 @@ namespace WebApp.Database
 
             return data;
         }
-    
+
+        #region Database Table Building
+        public void InitializeTables()
+        {
+            List<Table> tables = new List<Table>();
+
+            tables.Add(new A_Accounts());
+
+            Tables = tables;
+        }
+        
         public void BuildTables()
         {
             Connection.Open();
 
             foreach(Table table in Tables)
             {
-
+                SqlCommand command;
+                StringBuilder commandString = new StringBuilder(
+                    String.Format(
+                        "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='{0}' and xtype='U') CREATE TABLE {0} (",
+                        table.Name));
+                string[] cols = table.Columns;
+                for(int i = 0; i < cols.Length; i++)
+                {
+                    string col = cols[i];
+                    if (i == 0)
+                    {
+                        commandString.Append(col);
+                    }
+                    else
+                    {
+                        commandString.AppendFormat(", {0}", col);
+                    }
+                }
+                commandString.Append(");");
+                command = new SqlCommand(commandString.ToString(), Connection);
+                command.ExecuteNonQuery();
+                command.Dispose();
             }
             Connection.Close();
         }
+        #endregion
     }
 }
