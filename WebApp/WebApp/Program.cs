@@ -17,6 +17,10 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 
+//calling function these are class/file name
+CredentialCheck check = new CredentialCheck();
+//this is method name 
+check.CheckCredentials();
 
 app.MapControllerRoute(
     name: "default",
