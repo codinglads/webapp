@@ -16,18 +16,20 @@ using WebApp.Database;
 public class CredentialCheck{ 
     public void CheckCredentials(){
     Database db = new Database();
-    //the @ is the connection string
-    SqlConnection sqlcon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\cedmo\OneDrive\Documents\login.mdf;Integrated Security=True;Connect Timeout=30");
-    List<Dictionary<int, string>> username_entries = db.Select("select * from A_Accounts Where username='admin'", new int[] {0});
+        //gets connection string from DatabaseConnections.txt
+        SqlConnection Connection = DatabaseConnection.GetConnection();       
+        //need to get username and password from frontend
+        List<Dictionary<int, string>> username_entries = db.Select("select * from A_Accounts Where username='admin'", new int[] {0});
     List<Dictionary<int, string>> password_entries = db.Select("select * from A_Accounts Where password='pass'", new int[] {1});
     //create object which will send query through our connection to server
-    if((username_entries.Count == 0) && (password_entries.Count == 0))
+    if(((username_entries.Count == 0) || (password_entries.Count == 0)))
+    //change to true false 
     {
-        Console.WriteLine("wrong");
+            System.Diagnostics.Debug.WriteLine("wrong");
     }
     else
     {
-        Console.WriteLine("success");
-    }
+            System.Diagnostics.Debug.WriteLine("success");
+        }
 }
 }
