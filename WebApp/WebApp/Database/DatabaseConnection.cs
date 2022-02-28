@@ -13,7 +13,7 @@ namespace WebApp.Database
         {
             get
             {
-                string[] lines = File.ReadLines("DatabaseConnection.txt").ToArray();
+                string[] lines = File.ReadLines("Database/DatabaseConnection.txt").ToArray();
                 return lines[0];
             }
         }
