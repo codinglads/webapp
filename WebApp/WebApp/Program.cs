@@ -26,12 +26,15 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
-
+/* these were for testing login and sign up we can delete them if we need to 
 //calling function these are class/file name
-CredentialCheck check = new CredentialCheck();
+Login_signup check = new Login_signup();
 //this is method name 
 check.CheckCredentials();
 
+Login_signup makeAccount = new Login_signup();
+makeAccount.signUp();
+*/
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller}/{action=Index}/{id?}");
