@@ -2,9 +2,11 @@ using WebApp.Database;
 
 #region Database Building
 
-Database db = new Database();
-db.InitializeTables();
-db.BuildTables();
+using (Database db = new Database())
+{
+    db.InitializeTables();
+    db.BuildTables();
+}
 
 #endregion
 

@@ -1,10 +1,11 @@
-﻿using System.Data.SqlClient;
+﻿using System.Data;
+using System.Data.SqlClient;
 using System.Text;
 using WebApp.Database.Tables;
 
 namespace WebApp.Database
 {
-    public class Database
+    public class Database : IDisposable
     {
         public SqlConnection Connection;
         public List<Table> Tables;
@@ -17,6 +18,15 @@ namespace WebApp.Database
                 new A_Accounts()
 
             };
+        }
+
+        public void Dispose()
+        {
+            if (Connection != null && Connection.State == ConnectionState.Open)
+            {
+                Connection.Close();
+            }
+            GC.SuppressFinalize(this);
         }
 
         // Select statement grabs data from the database by taking in the select
@@ -44,6 +54,15 @@ namespace WebApp.Database
             Connection.Close();
 
             return data;
+        }
+
+        public void Update(string update_string)
+        {
+            Connection.Open();
+            SqlCommand command = new SqlCommand(update_string, Connection);
+            command.ExecuteNonQuery();
+            command.Dispose();
+            Connection.Close();
         }
 
         #region Database Table Building
