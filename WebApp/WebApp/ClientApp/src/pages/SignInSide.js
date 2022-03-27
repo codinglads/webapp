@@ -13,6 +13,8 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
+import { Layout } from '../components/Layout';
+
 function Copyright(props) {
     return (
         <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -39,7 +41,8 @@ export default function SignInSide() {
     };
 
     return (
-        <ThemeProvider theme={theme}>
+        <Layout>
+            <ThemeProvider theme={theme}>
             <Grid container component="main" sx={{ height: '100vh' }}>
                 <CssBaseline />
                 <Grid
@@ -56,7 +59,7 @@ export default function SignInSide() {
                         backgroundPosition: 'center',
                     }}
                 />
-                <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+                    <Grid item xs={12} sm={8} md={5} component={Paper} elevation={0} square>
                     <Box
                         sx={{
                             my: 8,
@@ -123,5 +126,6 @@ export default function SignInSide() {
                 </Grid>
             </Grid>
         </ThemeProvider>
-    );
+        </Layout>
+            );
 }

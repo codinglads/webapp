@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Layout } from './Layout';
 
 export class FetchData extends Component {
   static displayName = FetchData.name;
@@ -43,11 +44,11 @@ export class FetchData extends Component {
       : FetchData.renderForecastsTable(this.state.forecasts);
 
     return (
-      <div>
+      <Layout>
         <h1 id="tabelLabel" >Weather forecast</h1>
         <p>This component demonstrates fetching data from the server.</p>
         {contents}
-      </div>
+      </Layout>
     );
   }
 

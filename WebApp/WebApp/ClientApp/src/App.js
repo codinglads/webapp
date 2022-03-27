@@ -26,14 +26,14 @@ export default class App extends Component {
           <Router>
               <Routes>
                     <Route exact path='/' element={<Home/>} />
-                    <Route path='/counter' component={Counter} />
-                      <Route path='/fetch-data' component={FetchData} />
+                    <Route path='/counter' element={<Counter />} />
+                      <Route exact path='/fetch-data' element={<FetchData />} />
                       <Route exact path="/signin" element={<SignInSide />} />
                       <Route exact path="/signup" element={<SignUp />} />
                       <Route exact path="/forgotpassword" element={<ForgotPassword />} />
                       <Route path="*" element={<ErrorPage />} />
               </Routes>
-              </Router>
+          </Router>
     );
   }
 }
