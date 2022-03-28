@@ -19,7 +19,7 @@ function Copyright(props) {
     return (
             <Typography variant="body2" color="text.secondary" align="center" {...props}>
                 {'Copyright © '}
-                <Link color="inherit" href="https://mui.com/">
+                <Link color="inherit" href="/">
                     Snapshot
                 </Link>{' '}
                 {new Date().getFullYear()}
@@ -28,7 +28,13 @@ function Copyright(props) {
     );
 }
 
-const theme = createTheme();
+const theme = createTheme({
+    palette: {
+        primary: {
+            main: '#7bda57',
+        }
+    }
+});
 
 export default function SignUp() {
     const handleSubmit = (event) => {
@@ -64,6 +70,8 @@ export default function SignUp() {
                                 <Grid item xs={12} sm={6}>
                                     <TextField
                                         autoComplete="given-name"
+                                        variant="outlined"
+                                        color="primary"
                                         name="firstName"
                                         required
                                         fullWidth
@@ -75,6 +83,8 @@ export default function SignUp() {
                                 <Grid item xs={12} sm={6}>
                                     <TextField
                                         required
+                                        variant="outlined"
+                                        color="primary"
                                         fullWidth
                                         id="lastName"
                                         label="Last Name"
@@ -85,7 +95,9 @@ export default function SignUp() {
                                 <Grid item xs={12}>
                                     <TextField
                                         required
+                                        variant="outlined"
                                         fullWidth
+                                        color="primary"
                                         id="email"
                                         label="Email Address"
                                         name="email"
@@ -95,7 +107,9 @@ export default function SignUp() {
                                 <Grid item xs={12}>
                                     <TextField
                                         required
+                                        variant="outlined"
                                         fullWidth
+                                        color="primary"
                                         name="password"
                                         label="Password"
                                         type="password"
@@ -108,6 +122,7 @@ export default function SignUp() {
                             <Button
                                 type="submit"
                                 fullWidth
+                                style={{backgroundColor: '#7bda57'}}
                                 variant="contained"
                                 sx={{ mt: 3, mb: 2 }}
                             >
@@ -115,7 +130,7 @@ export default function SignUp() {
                             </Button>
                             <Grid container justifyContent="flex-end">
                                 <Grid item>
-                                    <Link href="/signin" variant="body2">
+                                    <Link href="/signin" variant="body2" style={{color: '#7bda57'}}>
                                         Already have an account? Sign in
                                     </Link>
                                 </Grid>

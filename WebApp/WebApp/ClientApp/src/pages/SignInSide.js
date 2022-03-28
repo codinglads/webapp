@@ -19,7 +19,7 @@ function Copyright(props) {
     return (
         <Typography variant="body2" color="text.secondary" align="center" {...props}>
             {'Copyright © '}
-            <Link color="inherit" href="https://mui.com/">
+            <Link color="inherit" href="/">
                 Snapshot
             </Link>{' '}
             {new Date().getFullYear()}
@@ -28,7 +28,13 @@ function Copyright(props) {
     );
 }
 
-const theme = createTheme();
+const theme = createTheme({
+    palette: {
+        primary: {
+            main: '#7bda57'
+        }
+    }
+});
 
 export default function SignInSide() {
     const handleSubmit = (event) => {
@@ -51,12 +57,13 @@ export default function SignInSide() {
                     sm={4}
                     md={7}
                     sx={{
-                        backgroundImage: 'url(/images/background-image2.jpeg)',
+                        backgroundImage: 'url(/images/mysterytree.jpg)',
                         backgroundRepeat: 'no-repeat',
                         backgroundColor: (t) =>
                             t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
+                        height: '80%'
                     }}
                 />
                     <Grid item xs={12} sm={8} md={5} component={Paper} elevation={0} square>
@@ -84,17 +91,21 @@ export default function SignInSide() {
                                 label="Email Address"
                                 name="email"
                                 autoComplete="email"
-                                autoFocus
+                                    autoFocus
+                                    color="primary"
+                                    variant="outlined"
                             />
                             <TextField
                                 margin="normal"
-                                required
+                                    required
+                                    variant="outlined"
                                 fullWidth
                                 name="password"
                                 label="Password"
                                 type="password"
                                 id="password"
-                                autoComplete="current-password"
+                                    autoComplete="current-password"
+                                    color="primary"
                             />
                             <FormControlLabel
                                 control={<Checkbox value="remember" color="primary" />}
@@ -103,19 +114,20 @@ export default function SignInSide() {
                             <Button
                                 type="submit"
                                 fullWidth
-                                variant="contained"
+                                    variant="contained"
+                                    style={{backgroundColor: "#7bda57"}}
                                 sx={{ mt: 3, mb: 2 }}
                             >
                                 Sign In
                             </Button>
                             <Grid container>
                                 <Grid item xs>
-                                    <Link href="/forgotpassword" variant="body2">
+                                        <Link href="/forgotpassword" variant="body2" style={{color: "#7bda57"}}>
                                         Forgot password?
                                     </Link>
                                 </Grid>
                                 <Grid item>
-                                    <Link href="/signup" variant="body2">
+                                        <Link href="/signup" variant="body2" style={{color: "7bda57"}}>
                                         {"Don't have an account? Sign Up"}
                                     </Link>
                                 </Grid>

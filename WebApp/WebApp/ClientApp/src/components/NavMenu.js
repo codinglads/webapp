@@ -25,26 +25,14 @@ export class NavMenu extends Component {
   render () {
     return (
       <header>
-        <Navbar className="navbar-expand-sm navbar-toggleable-sm ng-white mb-3" light>
+        <Navbar className="navbar-expand-sm bg-transparent navbar-toggleable-sm mb-3" light>
           <Container>
-            <NavbarBrand tag={Link} to="/">WebApp</NavbarBrand>
+            <NavbarBrand tag={Link} to="/"><img id="snapshot-logo" src="images/SnapShotLogo.png"/></NavbarBrand>
             <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
             <Collapse className="d-sm-inline-flex flex-sm-row-reverse" isOpen={!this.state.collapsed} navbar>
               <ul className="navbar-nav flex-grow">
                 <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/">Home</NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/counter">Counter</NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/fetch-data">Fetch data</NavLink>
-                </NavItem>
-                <NavItem>
                     <HomeMenu/>
-                </NavItem>
-                <NavItem>
-                    <NavLink tag={Link} className="text-dark" to="/signin">Sign In</NavLink>
                 </NavItem>
               </ul>
             </Collapse>
@@ -54,3 +42,18 @@ export class NavMenu extends Component {
     );
   }
 }
+
+/*
+ <NavItem>
+                  <NavLink tag={Link} className="text-dark" to="/">Home</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink tag={Link} className="text-dark" to="/counter">Counter</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink tag={Link} className="text-dark" to="/fetch-data">Fetch data</NavLink>
+                </NavItem>
+                                <NavItem>
+                    <NavLink tag={Link} className="text-dark" to="/signin">Sign In</NavLink>
+                </NavItem>
+ */

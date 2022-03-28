@@ -11,6 +11,7 @@ import Tooltip from '@mui/material/Tooltip';
 import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
+import { Link } from 'react-router-dom';
 
 export default function HomeMenu() {
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -24,8 +25,18 @@ export default function HomeMenu() {
     return (
         <React.Fragment>
             <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-                <Typography sx={{ minWidth: 100 }}>Contact</Typography>
-                <Typography sx={{ minWidth: 100 }}>Profile</Typography>
+                <Typography sx={{ minWidth: 100 }}>
+                    <Link to="/counter" style={{
+                        textDecoration: 'none',
+                        color: 'gray'
+                    }}>Counter</Link>
+                </Typography>
+                <Typography sx={{ minWidth: 100 }}>
+                    <Link to="/fetch-data" style={{
+                        textDecoration: 'none',
+                        color: 'gray'
+                    }}>Fetch Data</Link>
+                </Typography>
                 <Tooltip title="Account settings">
                     <IconButton
                         onClick={handleClick}
@@ -74,8 +85,8 @@ export default function HomeMenu() {
                 transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             >
-                <MenuItem>
-                    <Avatar /> Profile
+                <MenuItem component={Link} to="/signin">
+                    <Avatar /> Sign In/Sign Up
                 </MenuItem>
                 <MenuItem>
                     <Avatar /> My account
