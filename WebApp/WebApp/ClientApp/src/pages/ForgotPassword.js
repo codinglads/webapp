@@ -24,7 +24,13 @@ function Copyright(props) {
     );
 }
 
-const theme = createTheme();
+const theme = createTheme({
+    palette: {
+        primary: {
+            main: "#7bda57"
+        }
+    }
+});
 
 export default function ForgotPassword() {
     const handleSubmit = (event) => {
@@ -48,7 +54,7 @@ export default function ForgotPassword() {
                             alignItems: 'center',
                         }}
                     >
-                        <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+                        <Avatar sx={{ m: 1, bgcolor: '#7bda57' }}>
                             <LockOutlinedIcon />
                         </Avatar>
                         <Typography component="h1" variant="h5">
@@ -57,6 +63,7 @@ export default function ForgotPassword() {
                         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
                             <TextField
                                 margin="normal"
+                                color="primary"
                                 required
                                 fullWidth
                                 id="email"
@@ -69,8 +76,9 @@ export default function ForgotPassword() {
                                 href="/"
                                 type="submit"
                                 fullWidth
+                                style={{backgroundColor: "#7bda57"}}
                                 variant="contained"
-                                sx={{ mt: 3, mb: 2 }}
+                                sx={{ mt: 3, mb: 2, color: "white" }}
                             >
                                 Submit
                             </Button>

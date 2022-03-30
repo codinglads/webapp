@@ -19,6 +19,14 @@
     background-color: #7bda57;
 }
 
-.MuiOutlinedInput-notchedOutline {
-    border: none !important;
+#locationsearch+.MuiOutlinedInput-notchedOutline.css-1d3z3hw-MuiOutlinedInput-notchedOutline{
+    border: none;
+}
+
+a:hover, li:hover{
+    color: #7bda57;
+}
+
+a#explorebtn:hover{
+    color: white;
 }

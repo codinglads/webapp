@@ -57,7 +57,7 @@ export default function Home() {
 
 
                         <Typography id='whereto'
-                            component="h1" variant="h5" fontSize={40} color="black" >
+                            component="h1" variant="h5" fontSize={40} color="black" fontWeight="bold" >
                             Where to?
                         </Typography>
                         <Box id='locationbox'
@@ -76,6 +76,7 @@ export default function Home() {
                                 name="locationsearch"
                                 autoComplete="locationsearch"
                                 autoFocus
+                                size="small"
                                 sx={{
                                     borderRadius: "50px",
                                     backgroundColor: "white"
@@ -85,7 +86,7 @@ export default function Home() {
                                 href="/"
                                 type="submit"
                                 variant="contained"
-                                sx={{ mt: 3, mb: 2 }}
+                                sx={{ mt: 3, mb: 2, color: "white"}}
                             >
                                 Explore
                             </Button>

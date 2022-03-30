@@ -13,6 +13,16 @@ import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import { Link } from 'react-router-dom';
 
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+const theme = createTheme({
+    palette: {
+        primary: {
+            main: "#000000"
+        }
+    }
+});
+
 export default function HomeMenu() {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
@@ -23,30 +33,33 @@ export default function HomeMenu() {
         setAnchorEl(null);
     };
     return (
+        <ThemeProvider theme={theme}>
         <React.Fragment>
             <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
                 <Typography sx={{ minWidth: 100 }}>
                     <Link to="/counter" style={{
                         textDecoration: 'none',
-                        color: 'gray'
+                            color: 'black',
+                            fontWeight: 'bold'
                     }}>Counter</Link>
                 </Typography>
                 <Typography sx={{ minWidth: 100 }}>
                     <Link to="/fetch-data" style={{
                         textDecoration: 'none',
-                        color: 'gray'
+                            color: 'black',
+                            fontWeight: 'bold'
                     }}>Fetch Data</Link>
                 </Typography>
                 <Tooltip title="Account settings">
                     <IconButton
                         onClick={handleClick}
-                        size="small"
-                        sx={{ ml: 2 }}
+                            size="small"
+                        sx={{ ml: 2, bgColor: 'black' }}
                         aria-controls={open ? 'account-menu' : undefined}
                         aria-haspopup="true"
                         aria-expanded={open ? 'true' : undefined}
                     >
-                        <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
+                        <Avatar sx={{ width: 32, height: 32, backgroundColor: 'black' }}>M</Avatar>
                     </IconButton>
                 </Tooltip>
             </Box>
@@ -111,7 +124,8 @@ export default function HomeMenu() {
                     Logout
                 </MenuItem>
             </Menu>
-        </React.Fragment>
+            </React.Fragment>
+        </ThemeProvider>
     );
 }
 
