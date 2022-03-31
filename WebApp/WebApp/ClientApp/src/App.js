@@ -15,6 +15,7 @@ import { Layout } from './components/Layout';
 import  Home  from './components/Home';
 import { FetchData } from './components/FetchData';
 import { Counter } from './components/Counter';
+import Syracuse from './components/Syracuse/Syracuse';
 
 import './custom.css'
 
@@ -25,7 +26,8 @@ export default class App extends Component {
       return (
           <Router>
               <Routes>
-                    <Route exact path='/' element={<Home/>} />
+                  <Route exact path='/' element={<Home />} />
+                  <Route exact path='/syracuse' element={<Syracuse />} />
                     <Route path='/counter' element={<Counter />} />
                       <Route exact path='/fetch-data' element={<FetchData />} />
                       <Route exact path="/signin" element={<SignInSide />} />
