@@ -1,0 +1,23 @@
+#homepagepic{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+#whereto{
+    top: 600px;
+    font-style: italic;
+
+}
+
+
+#explorebtn{
+    background-color: #7bda57;
+}
+/* 
+.MuiOutlinedInput-notchedOutline{
+    border: none !important;
+} */
