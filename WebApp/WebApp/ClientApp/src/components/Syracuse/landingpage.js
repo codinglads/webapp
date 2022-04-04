@@ -48,7 +48,7 @@ export default function LandingPage({ posts }) {
             pb: 6,
           }}
         >
-          <Container maxWidth="sm">
+          <Container maxWidth="300">
             <Typography
               component="h1"
               variant="h2"
@@ -56,7 +56,7 @@ export default function LandingPage({ posts }) {
               color="text.primary"
               gutterBottom
             >
-                          Syracuse
+                          <strong>Syracuse</strong>
                       </Typography>
                       <div class= 'justify-content-center'>
                       <Card
