@@ -19,7 +19,7 @@
     background-color: #7bda57;
 }
 
-#locationsearch+.MuiOutlinedInput-notchedOutline.css-1d3z3hw-MuiOutlinedInput-notchedOutline{
+input[id*=mui]+div+.MuiOutlinedInput-notchedOutline.css-1d3z3hw-MuiOutlinedInput-notchedOutline{
     border: none;
 }
 

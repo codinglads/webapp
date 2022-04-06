@@ -118,7 +118,7 @@ export default function HomeMenu() {
                     </ListItemIcon>
                     Add another account
                 </MenuItem>
-                <MenuItem>
+                    <MenuItem component={Link} to="/settings">
                     <ListItemIcon>
                         <Settings fontSize="small" />
                     </ListItemIcon>

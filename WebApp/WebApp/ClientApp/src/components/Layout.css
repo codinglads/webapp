@@ -1,3 +1,8 @@
 ﻿#page-content{
     z-index: 2;
 }
+
+#layoutBody {
+    overflow-y: scroll;
+    height: 100vh;
+}

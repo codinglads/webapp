@@ -1,11 +1,10 @@
 import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
+import Autocomplete from '@mui/material/Autocomplete';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import Link from '@mui/material/Link';
 import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -24,13 +23,17 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function Home() {
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get('email'),
-        });
+        const formdata = new FormData(event.currentTarget);
+        const search = formdata.get('locationsearch');
+        if (search == "") return;
+        const response = await fetch('api/location?loc=' + formdata.get('locationsearch'));
+        const location = await response.json();
+        window.location.href = location[0];
     };
+
+    const optParams = ["Syracuse"];
 
     return (
         <ThemeProvider theme={theme}>
@@ -68,22 +71,25 @@ export default function Home() {
                                 alignItems: 'center',
                                 width: '100%'
                             }}>
-                            <TextField
-                                margin="normal"
+                            <Autocomplete
+                                freeSolo
                                 fullWidth
-                                id="locationsearch"
-                                placeholder='Search a Location'
-                                name="locationsearch"
-                                autoComplete="locationsearch"
-                                autoFocus
-                                size="small"
-                                sx={{
-                                    borderRadius: "50px",
-                                    backgroundColor: "white"
-                                }}
-                            />
+                                options={optParams}
+                                renderInput={(params) => <TextField {...params}
+                                    margin="normal"
+                                    fullWidth
+                                    id="locationsearch"
+                                    placeholder='Search a Location'
+                                    name="locationsearch"
+                                    autoComplete="locationsearch"
+                                    autoFocus
+                                    size="small"
+                                    sx={{
+                                        borderRadius: "50px",
+                                        backgroundColor: "white"
+                                    }}
+                                />} />
                             <Button id='explorebtn'
-                                href="/"
                                 type="submit"
                                 variant="contained"
                                 sx={{ mt: 3, mb: 2, color: "white"}}
