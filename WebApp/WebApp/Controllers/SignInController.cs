@@ -12,14 +12,14 @@ namespace WebApp.Controllers
     public class SignInController : ControllerBase
     {
         [HttpGet]
-        public IActionResult Login(string username, string password)
+        public IActionResult Login(string email, string password)
         {
             Database db = new Database();
             StringBuilder sb = new StringBuilder("SELECT * FROM ");
             sb.Append(new A_Accounts().Name);
-            sb.Append(String.Format(" WHERE username='{0}' AND password='{1}'",
-                username, password));
-            List<Dictionary<int, string>> table = db.Select(sb.ToString(), new int[] { 0, 1 });
+            sb.Append(String.Format(" WHERE email='{0}' AND password='{1}'",
+                email, password));
+            List<Dictionary<int, string>> table = db.Select(sb.ToString(), new int[] { 1, 5 });
             if (table.Count > 0)
             {
                 return Ok();

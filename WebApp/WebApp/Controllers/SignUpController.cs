@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using System.Data.SqlClient;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApp.Controllers
@@ -14,18 +14,29 @@ namespace WebApp.Controllers
         {
             try
             {
-                Database db = new Database();
-                /*StringBuilder sb = new StringBuilder("SELECT * FROM ");
-                sb.Append(new A_Accounts().Name);
-                sb.Append(String.Format(" WHERE username='{0}' AND password='{1}'",
-                    username, password));
-                List<Dictionary<int, string>> table = db.Select(sb.ToString(), new int[] { 0, 1 });
-                if (table.Count > 0)
+                string commString = "INSERT INTO A_Accounts(firstName, lastName, email, password) VALUES (@val1, @val2, @val3, @val4)";
+                SqlConnection conn = DatabaseConnection.GetConnection();
+                //create an sqlCommand
+                //Why is this done? To sanitize inputs and prevent injection into the string..
+                using (SqlCommand comm = new SqlCommand())
                 {
-                    return Ok();
-                }*/
+                    comm.Connection = conn;
+                    comm.CommandText = commString;
+                    //where the sanitizing happens
+                    //santizing prevents adding malitious pieces of code into the query strings
+                    //the strings next to the @val need to be taken from front end
+                    comm.Parameters.AddWithValue("@val1", firstName);
+                    comm.Parameters.AddWithValue("@val2", lastName);
+                    comm.Parameters.AddWithValue("@val3", email);
+                    comm.Parameters.AddWithValue("@val4", password);
+                    //open the connection
+                    conn.Open();
+                    //execute the query we just wrote
+                    comm.ExecuteNonQuery();
+                    conn.Close();
+                }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return BadRequest(e.Message);
             }
