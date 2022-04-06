@@ -5,7 +5,9 @@ import { useEffect, useState } from 'react';
 import * as React from 'react';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
-import  LandingPage  from './landingpage.js';
+import LandingPage from './landingpage.js';
+
+
 
 function Copyright(props) {
     return (
@@ -21,6 +23,7 @@ function Copyright(props) {
 }
 
 const theme = createTheme({
+
     palette: {
         primary: {
             main: '#7bda57'
@@ -101,15 +104,17 @@ export default function Syracuse() {
         console.log(posts)
        
         return (
+            
             <Layout>
-                 <LandingPage posts={posts} />
+     
+                <LandingPage posts={posts} />
             </Layout>
         );
     } else {
         return (
             <Layout>
                 <ThemeProvider theme={theme}>
-                    penis
+                    Loading
                     <Copyright sx={{ mt: 5 }} />
                 </ThemeProvider>
             </Layout>

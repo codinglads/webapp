@@ -17,6 +17,8 @@ import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import App from './wether.js'
 
+
+
 function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" align="center">
@@ -37,7 +39,22 @@ const theme = createTheme();
 export default function LandingPage({ posts }) {
 
   return (
-    <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme}>
+          <div class="has-bg-img">
+              <Typography id='syracusecaption'
+                  positon = "absolute" z-index = "2" align = "center" component="h1" variant="h5" fontSize={50} color="black" fontWeight="bold" >
+                  Syracuse
+              </Typography>
+              <img 
+                  src="https://media-exp1.licdn.com/dms/image/C4D1BAQF4HgEQDAbSIQ/company-background_10000/0/1603480139137?e=2147483647&v=beta&t=exBKN8D0Of_Ard4hWL615jsnea91VIs9GY6rlB0R9PA"  alt="Responsive image" />
+          
+
+        
+
+
+          
+
+         
       <CssBaseline />
       <main>
         {/* Hero unit */}
@@ -48,23 +65,16 @@ export default function LandingPage({ posts }) {
             pb: 6,
           }}
         >
+
           <Container maxWidth="300">
-            <Typography
-              component="h1"
-              variant="h2"
-              align="center"
-              color="text.primary"
-              gutterBottom
-            >
-                          <strong>Syracuse</strong>
-                      </Typography>
+
                       <div class= 'justify-content-center'>
                       <Card
                           sx={{ height: '100%', display: 'flex', flexDirection: 'column', px:2, pt:2 }}
                       >
                           <CardMedia
                              
-                              
+
                           />
                           <CardContent class='object-fit' sx={{ flexGrow: 1 }}>
                               <App />
@@ -126,7 +136,8 @@ export default function LandingPage({ posts }) {
             ))}
           </Grid>
         </Container>
-      </main>
+              </main>
+          </div>
       {/* Footer */}
           <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
               <div class="text-center">
@@ -142,6 +153,8 @@ export default function LandingPage({ posts }) {
         <Copyright />
       </Box>
       {/* End footer */}
+      
+      
     </ThemeProvider>
   );
 }
