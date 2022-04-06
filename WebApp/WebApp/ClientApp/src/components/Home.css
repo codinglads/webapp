@@ -30,3 +30,7 @@ a:hover, li:hover{
 a#explorebtn:hover{
     color: white;
 }
+
+div.MuiAutocomplete-popper.css-bckmzb-MuiAutocomplete-popper{
+    max-width: 300px;
+}

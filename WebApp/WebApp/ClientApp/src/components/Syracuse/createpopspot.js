@@ -12,13 +12,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import AttachmentIcon from '@mui/icons-material/Attachment';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import MenuItem from '@mui/material/MenuItem';
-
-
-
-
-
-
+import { request } from 'graphql-request';
 
 
 function Copyright(props) {
@@ -44,17 +38,36 @@ const theme = createTheme({
     }
 });
 
-export default function SignUp() {
+export default function CreatePopSpot() {
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    const formdata = new FormData(event.currentTarget);
+      const city = formdata.get('city');
+      const state = formdata.get('state');
+      const title = formdata.get('title');
+      const desc = formdata.get('description');
+      const link = formdata.get('link');
+
+      /// This is where the query needs to be run
+      /// You can use the variables above to build it
+      ///
+      ///
+      ///
+      var bigQuery = "mutation MyMutation($title: String = " + title;
+      bigQuery = bigQuery + ", $description: String = " + desc;
+      bigQuery = bigQuery + ", $link: String = " + link;
+      bigQuery = bigQuery + ", $imageUrl: String = " + city;
+      bigQuery = bigQuery + ") {createPopspot(data: { title: $title, description: $description, slug: $slug, link: $link, imageUrl: $imageUrl }) {";
+      bigQuery = bigQuery + "title description link imageUrl } }";
+
+      const func = async () => {
+          const popspotsConnection = await request(
+              'https://api-us-east-1.graphcms.com/v2/cl0y82ax546kp01z3hw2kc6ab/master', bigQuery);
+      }
+
+
+      window.location.href = "syracuse";
   };
-
-
 
   // const languages = [
   //   {
@@ -88,8 +101,6 @@ export default function SignUp() {
   //     setLanguage(event.target.value);
   // };
 
-
-
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
@@ -100,8 +111,7 @@ export default function SignUp() {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-          }}
-        >
+          }}>
           <Avatar sx={{ m: 1, bgcolor: "#7bda57" }}>
             <BackpackIcon />
           </Avatar>
@@ -123,27 +133,10 @@ export default function SignUp() {
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
-                
-                  //select
                   required
                   fullWidth
                   id="state"
-                  label="State"
-                  // value = {language}
-                  // onChange = {handleChange}
-                  //helperText = "Please select your State"
-
-                // {languages.map((option) => (
-                //   <MenuItem key = {option.value} value = {option.value}>
-                //     {option.label}
-                //   </MenuItem>
-
-                // ))}                  
-                  
-
-                /> 
-
-
+                  label="State"/> 
               </Grid>
               <Grid item xs={12}>
                 <TextField
@@ -185,19 +178,16 @@ export default function SignUp() {
                 />
               </Grid>
             </Grid>
-            <Button
-              type="submit"
-              halfWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Submit Post
-            </Button>
-            <Grid container justifyContent="flex-end">
-              <Grid item>
-                <Link href="#" variant="body2">
-                  Cancel Post
-                </Link>
+            <Grid container alignItems="center">
+               <Grid container justifyContent="flex-start" xs={6}>
+                  <Button type="submit" halfWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
+                     Submit Post
+                  </Button>
+               </Grid>
+               <Grid container justifyContent="flex-end" xs={6}>
+                    <Link href="/" variant="body2">
+                        Cancel
+                    </Link>
               </Grid>
             </Grid>
           </Box>

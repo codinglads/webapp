@@ -130,8 +130,8 @@ export default function LandingPage({ posts }) {
       {/* Footer */}
           <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
               <div class="text-center">
-            <Button id = 'explorebtn'
-                href="/popspot"
+                  <Button id='explorebtn'
+                      href='createpopspot'
                 type="submit"
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}

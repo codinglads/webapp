@@ -17,6 +17,7 @@ import { FetchData } from './components/FetchData';
 import { Counter } from './components/Counter';
 import Syracuse from './components/Syracuse/Syracuse';
 import Settings from './pages/SettingsPage';
+import CreatePopSpot from './components/Syracuse/CreatePopSpot'
 
 import './custom.css'
 
@@ -29,10 +30,11 @@ export default class App extends Component {
               <Routes>
                   <Route exact path='/' element={<Home />} />
                   <Route exact path='/syracuse' element={<Syracuse />} />
-                    <Route path='/counter' element={<Counter />} />
-                      <Route exact path='/fetch-data' element={<FetchData />} />
-                      <Route exact path="/signin" element={<SignInSide />} />
-                      <Route exact path="/signup" element={<SignUp />} />
+                  <Route exact path='/createpopspot' element={<CreatePopSpot />} />
+                  <Route path='/counter' element={<Counter />} />
+                  <Route exact path='/fetch-data' element={<FetchData />} />
+                  <Route exact path="/signin" element={<SignInSide />} />
+                  <Route exact path="/signup" element={<SignUp />} />
                   <Route exact path="/forgotpassword" element={<ForgotPassword />} />
                   <Route path="/settings" element={<Settings/>} />
                   <Route path="*" element={<ErrorPage />} />

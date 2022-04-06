@@ -36,27 +36,6 @@ export default function HomeMenu() {
         <ThemeProvider theme={theme}>
         <React.Fragment>
             <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-                 <Typography sx={{ minWidth: 100 }}>
-                        <Link to="/syracuse" style={{
-                            textDecoration: 'none',
-                            color: 'black',
-                            fontWeight: 'bold'
-                        }}>Syracuse</Link>
-                 </Typography>
-                 <Typography sx={{ minWidth: 100 }}>
-                    <Link to="/counter" style={{
-                        textDecoration: 'none',
-                            color: 'black',
-                            fontWeight: 'bold'
-                    }}>Counter</Link>
-                </Typography>
-                <Typography sx={{ minWidth: 100 }}>
-                    <Link to="/fetch-data" style={{
-                        textDecoration: 'none',
-                            color: 'black',
-                            fontWeight: 'bold'
-                    }}>Fetch Data</Link>
-                </Typography>
                 <Tooltip title="Account settings">
                     <IconButton
                         onClick={handleClick}
@@ -155,4 +134,29 @@ export class HomeMenu extends Component {
             </div>
         );
     }
-}*/
+}
+
+
+<Typography sx={{ minWidth: 100 }}>
+                        <Link to="/syracuse" style={{
+                            textDecoration: 'none',
+                            color: 'black',
+                            fontWeight: 'bold'
+                        }}>Syracuse</Link>
+                 </Typography>
+                 <Typography sx={{ minWidth: 100 }}>
+                    <Link to="/counter" style={{
+                        textDecoration: 'none',
+                            color: 'black',
+                            fontWeight: 'bold'
+                    }}>Counter</Link>
+                </Typography>
+                <Typography sx={{ minWidth: 100 }}>
+                    <Link to="/fetch-data" style={{
+                        textDecoration: 'none',
+                            color: 'black',
+                            fontWeight: 'bold'
+                    }}>Fetch Data</Link>
+                </Typography>
+
+*/
