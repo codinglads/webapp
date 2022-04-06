@@ -106,6 +106,53 @@ namespace WebApp.Database
             }
             Connection.Close();
         }
+        
+        public void VerifyColums()
+        {
+            Connection.Open();
+
+            foreach (Table table in Tables)
+            {
+                string[] colNames = table.Columns;
+                colNames = colNames.Select(s => s.Split(' ').First()).ToArray();
+                for (int i = 0; i <= colNames.Length; i++)
+                {
+                    SqlCommand command;
+                    StringBuilder commandString = new StringBuilder("IF NOT EXISTS (SELECT * FROM sys.columns WHERE ");
+                    commandString.Append(String.Format("object_id = OBJECT_ID(N'[snapshot_master].[{0}]' ", table.Name));
+                    commandString.Append(String.Format("AND name = '{0}) ", colNames[i]));
+                    commandString.Append(String.Format("ALTER TABLE {0} ADD {1} ", 
+                        table.Name, table.Columns[i]));
+                    commandString.Append("");
+
+                    command = new SqlCommand(commandString.ToString(), Connection);
+                    command.ExecuteNonQuery();
+                    command.Dispose();
+                }
+            }
+
+            Connection.Close();
+        }
+        
+        public void DeleteTables()
+        {
+            Connection.Open();
+
+            foreach (Table table in Tables)
+            {
+                SqlCommand command;
+                StringBuilder commandString = new StringBuilder(
+                    String.Format(
+                        "IF EXISTS (SELECT * FROM sysobjects WHERE name='{0}' and xtype='U') DROP TABLE {0}",
+                        table.Name));
+
+                command = new SqlCommand(commandString.ToString(), Connection);
+                command.ExecuteNonQuery();
+                command.Dispose();
+            }
+            Connection.Close();
+        }
+
         #endregion
     }
 }

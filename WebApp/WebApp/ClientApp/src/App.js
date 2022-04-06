@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";//import { Route } from 'react-router';
 
-import SignInSide from "./pages/SignInSide";
+import { SignInSide } from "./pages/SignInSide";
 import SignUp from "./pages/SignUp";
 import ErrorPage from "./pages/ErrorPage";
 import ForgotPassword from "./pages/ForgotPassword";   

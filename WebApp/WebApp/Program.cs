@@ -1,9 +1,12 @@
 using WebApp.Database;
 
+bool DEVELOPMENT = true;
+
 #region Database Building
 
 using (Database db = new Database())
 {
+    if (DEVELOPMENT) db.DeleteTables();
     db.InitializeTables();
     db.BuildTables();
 }

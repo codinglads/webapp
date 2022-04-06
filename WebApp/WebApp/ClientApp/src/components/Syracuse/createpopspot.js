@@ -13,6 +13,7 @@ import Container from '@mui/material/Container';
 import AttachmentIcon from '@mui/icons-material/Attachment';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { request } from 'graphql-request';
+import { Layout } from '../Layout';
 
 
 function Copyright(props) {
@@ -53,18 +54,33 @@ export default function CreatePopSpot() {
       ///
       ///
       ///
-      var bigQuery = "mutation MyMutation($title: String = " + title;
-      bigQuery = bigQuery + ", $description: String = " + desc;
-      bigQuery = bigQuery + ", $link: String = " + link;
-      bigQuery = bigQuery + ", $imageUrl: String = " + city;
-      bigQuery = bigQuery + ") {createPopspot(data: { title: $title, description: $description, slug: $slug, link: $link, imageUrl: $imageUrl }) {";
-      bigQuery = bigQuery + "title description link imageUrl } }";
+      var bigQuery = 'mutation MyMutation($title: String = "' + title;
+      bigQuery = bigQuery + '", $description: String = "' + desc;
+      bigQuery = bigQuery + '", $link: String = "' + link;
+      bigQuery = bigQuery + '", $imageUrl: String = "' + 'http://www.google.com/';
+      bigQuery = bigQuery + '") {createPopspot(data: { title: $title, description: $description, link: $link, imageUrl: $imageUrl }) {';
+      bigQuery = bigQuery + 'title description link imageUrl } }';
+
+      var publishQuery = 'mutation MyMutation {publishManyPopspotsConnection { edges { node {' +
+          'description imageUrl link title } } } }';
 
       const func = async () => {
           const popspotsConnection = await request(
               'https://api-us-east-1.graphcms.com/v2/cl0y82ax546kp01z3hw2kc6ab/master', bigQuery);
+
+          if (!popspotsConnection.ok()) {
+
+          }
       }
 
+      func();
+
+      func = async () => {
+          const popSPotPub = await request(
+              'https://api-us-east-1.graphcms.com/v2/cl0y82ax546kp01z3hw2kc6ab/master', publishQuery);
+      }
+
+      func();
 
       window.location.href = "syracuse";
   };
@@ -101,7 +117,8 @@ export default function CreatePopSpot() {
   //     setLanguage(event.target.value);
   // };
 
-  return (
+    return (
+      <Layout>
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
@@ -195,5 +212,6 @@ export default function CreatePopSpot() {
         <Copyright sx={{ mt: 5 }} />
       </Container>
     </ThemeProvider>
-  );
+            </ Layout>
+            );
 }
