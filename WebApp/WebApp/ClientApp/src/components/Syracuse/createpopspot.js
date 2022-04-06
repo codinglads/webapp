@@ -31,6 +31,10 @@ function Copyright(props) {
   );
 }
 
+//function isImage(url) {
+  //  return /^https?:\/\/.+\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(url);
+//}
+
 const theme = createTheme({
     palette: {
         primary: {
@@ -48,6 +52,7 @@ export default function CreatePopSpot() {
       const title = formdata.get('title');
       const desc = formdata.get('description');
       const link = formdata.get('link');
+      const slug = (title.split(' ')[0]).toLowerCase();
 
       /// This is where the query needs to be run
       /// You can use the variables above to build it
@@ -57,12 +62,13 @@ export default function CreatePopSpot() {
       var bigQuery = 'mutation MyMutation($title: String = "' + title;
       bigQuery = bigQuery + '", $description: String = "' + desc;
       bigQuery = bigQuery + '", $link: String = "' + link;
-      bigQuery = bigQuery + '", $imageUrl: String = "' + 'http://www.google.com/';
-      bigQuery = bigQuery + '") {createPopspot(data: { title: $title, description: $description, link: $link, imageUrl: $imageUrl }) {';
-      bigQuery = bigQuery + 'title description link imageUrl } }';
+      bigQuery = bigQuery + '", $imageUrl: String = "' + city;
+      bigQuery = bigQuery + '", $slug: String = "' + slug;
+      bigQuery = bigQuery + '") {createPopspot(data: { title: $title, description: $description, link: $link, imageUrl: $imageUrl, slug: $slug }) {';
+      bigQuery = bigQuery + 'title description link imageUrl slug} }';
 
       var publishQuery = 'mutation MyMutation {publishManyPopspotsConnection { edges { node {' +
-          'description imageUrl link title } } } }';
+          'description imageUrl link title slug} } } }';
 
       const func = async () => {
           const popspotsConnection = await request(
@@ -75,12 +81,12 @@ export default function CreatePopSpot() {
 
       func();
 
-      func = async () => {
+      const func2 = async () => {
           const popSPotPub = await request(
               'https://api-us-east-1.graphcms.com/v2/cl0y82ax546kp01z3hw2kc6ab/master', publishQuery);
       }
 
-      func();
+      func2();
 
       window.location.href = "syracuse";
   };
@@ -144,7 +150,7 @@ export default function CreatePopSpot() {
                   required
                   fullWidth
                   id="city"
-                  label="City"
+                  label="Image Address"
                   autoFocus
                 />
               </Grid>

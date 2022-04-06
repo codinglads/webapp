@@ -15,7 +15,15 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import App from './wether.js'
+import App from './wether.js';
+import { Counter } from '../Counter';
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route,
+    useParams
+} from "react-router-dom";
+
 
 function Copyright() {
   return (
@@ -57,6 +65,7 @@ export default function LandingPage({ posts }) {
               gutterBottom
             >
                           <strong>Syracuse</strong>
+                         
                       </Typography>
                       <div class= 'justify-content-center'>
                       <Card
@@ -103,8 +112,8 @@ export default function LandingPage({ posts }) {
                                 px: '3%',
                                 class: 'rounded',
                             }}
-                            image={post.node.image.url}
-                            alt="random"
+                            image={post.node.imageUrl}
+                            alt={post.title}
                             
                   />
                   <CardContent sx={{ flexGrow: 1 }}>
@@ -117,9 +126,11 @@ export default function LandingPage({ posts }) {
                                 {post.node.description}
                     </Typography>
                   </CardContent>
-                  <CardActions>
-                    <Button size="small">View</Button>
-                    <Button size="small">Edit</Button>
+                        <CardActions>
+                            
+                            <Link href={`/syracuse/${post.node.slug}`}> View </Link>
+                               
+                  
                   </CardActions>
                 </Card>
               </Grid>
@@ -145,3 +156,5 @@ export default function LandingPage({ posts }) {
     </ThemeProvider>
   );
 }
+
+

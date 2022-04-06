@@ -33,6 +33,7 @@ const cards = [1, 2, 3,];
 
 
 export default function Syracuse() {
+   
 
     const [popspotsConnection, setPopSpots] = useState(null);
     
@@ -60,6 +61,7 @@ export default function Syracuse() {
               image {
                 url
               }
+              imageUrl
             }
           }
         }
@@ -98,7 +100,7 @@ export default function Syracuse() {
     if (popspotsConnection != null) {
         
         var posts = [popspotsConnection][0].edges;
-        console.log(posts)
+       
        
         return (
             <Layout>
@@ -109,7 +111,7 @@ export default function Syracuse() {
         return (
             <Layout>
                 <ThemeProvider theme={theme}>
-                    penis
+                    <h2>Loading </h2>
                     <Copyright sx={{ mt: 5 }} />
                 </ThemeProvider>
             </Layout>

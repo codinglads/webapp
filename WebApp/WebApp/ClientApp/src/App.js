@@ -17,12 +17,15 @@ import { FetchData } from './components/FetchData';
 import { Counter } from './components/Counter';
 import Syracuse from './components/Syracuse/Syracuse';
 import Settings from './pages/SettingsPage';
-import CreatePopSpot from './components/Syracuse/CreatePopSpot'
+import CreatePopSpot from './components/Syracuse/createpopspot'
 
 import './custom.css'
 
 export default class App extends Component {
-  static displayName = App.name;
+    static displayName = App.name;
+
+
+
 
   render () {
       return (
@@ -37,7 +40,13 @@ export default class App extends Component {
                   <Route exact path="/signup" element={<SignUp />} />
                   <Route exact path="/forgotpassword" element={<ForgotPassword />} />
                   <Route path="/settings" element={<Settings/>} />
+                  
+                  <Route exact path='/syracuse/dbbq' element={<Counter />} />
+                  <Route exact path='/syracuse/delmonicos' element={<Counter />} />
+                  <Route exact path='/buffalo/bigditchbrewery' element={<Counter />} />
+                  <Route exact path='/syracuse/stellany' element={<Counter />} />
                   <Route path="*" element={<ErrorPage />} />
+
               </Routes>
           </Router>
     );
