@@ -1,9 +1,29 @@
-import * as React from 'react';
-import Link from '@mui/material/Link';
-import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
+import { request } from 'graphql-request';
 import { Layout } from '../Layout';
+import { useEffect, useState } from 'react';
+import * as React from 'react';
+import AppBar from '@mui/material/AppBar';
+import Button from '@mui/material/Button';
+import CameraIcon from '@mui/icons-material/PhotoCamera';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import CssBaseline from '@mui/material/CssBaseline';
+import Grid from '@mui/material/Grid';
+import Stack from '@mui/material/Stack';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import Link from '@mui/material/Link';
+import  LandingPage  from './landingpage.js';
+
+
+
+
+
 
 function Copyright(props) {
     return (
@@ -25,13 +45,100 @@ const theme = createTheme({
         }
     }
 });
+const cards = [1, 2, 3,];
+
+
+
 
 export default function Syracuse() {
-    return (
-        <Layout>
-            <ThemeProvider theme={theme}>
-                <Copyright sx={{ mt: 5 }} />
-            </ThemeProvider>
-        </Layout>
-    );
+
+    const [popspotsConnection, setPopSpots] = useState(null);
+    
+    var bigQuery = `{
+        popspotsConnection {
+          edges {
+            node {
+              createdAt
+              title
+              description
+              link
+              slug
+              author {
+                bio
+                name
+                id
+                photo {
+                  url
+                }
+              }
+              categories {
+                name
+                slug
+              }
+              image {
+                url
+              }
+            }
+          }
+        }
+      }    
+        
+    `
+    var bigQueryString = bigQuery.replace(/\n/g, ' ');
+   
+
+    useEffect(() => {
+        const getPop = async () => {
+            const { popspotsConnection } = await request(
+                'https://api-us-east-1.graphcms.com/v2/cl0y82ax546kp01z3hw2kc6ab/master',
+
+         
+                bigQueryString
+
+                
+        
+            );
+            setPopSpots(popspotsConnection)
+          //  console.log(popspotsConnection);
+
+            
+        };
+
+        getPop();
+        
+    }, []);
+    const cards = [1, 2, 3,];
+
+    const theme = createTheme();
+  
+    //setTimeout(function[, 3000, console.log(popspotsConnection)]);
+    //
+    if (popspotsConnection != null) {
+        
+        var posts = [popspotsConnection][0].edges;
+        console.log(posts)
+       
+        return (
+            <Layout>
+                 <LandingPage posts={posts} />
+            </Layout>
+        );
+    } else {
+        return (
+            <Layout>
+                <ThemeProvider theme={theme}>
+                    penis
+                    <Copyright sx={{ mt: 5 }} />
+                </ThemeProvider>
+            </Layout>
+        );
+
+    }
+
+
 }
+
+
+//
+
+

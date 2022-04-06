@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";//impo
 import SignInSide from "./pages/SignInSide";
 import SignUp from "./pages/SignUp";
 import ErrorPage from "./pages/ErrorPage";
-import ForgotPassword from "./pages/ForgotPassword";
+import ForgotPassword from "./pages/ForgotPassword";   
 
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
