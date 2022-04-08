@@ -38,7 +38,6 @@ export default function Home() {
         <ThemeProvider theme={theme}>
             <img id='homepagepic'
                 src='images/homepagepic.jpeg'>
-
             </img>
             <Layout>
                 <Container component="main" maxWidth="xs"
