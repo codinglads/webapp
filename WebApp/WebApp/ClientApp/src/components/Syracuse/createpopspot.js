@@ -67,16 +67,12 @@ export default function CreatePopSpot() {
       bigQuery = bigQuery + '") {createPopspot(data: { title: $title, description: $description, link: $link, imageUrl: $imageUrl, slug: $slug }) {';
       bigQuery = bigQuery + 'title description link imageUrl slug} }';
 
-      var publishQuery = 'mutation MyMutation {publishManyPopspotsConnection { edges { node {' +
-          'description imageUrl link title slug} } } }';
-
+      var publishQuery = 'mutation publishMutation { publishManyPopspotsConnection(last: 1) { edges { node { description imageUrl link title slug} } }  }';
+      
       const func = async () => {
           const popspotsConnection = await request(
               'https://api-us-east-1.graphcms.com/v2/cl0y82ax546kp01z3hw2kc6ab/master', bigQuery);
 
-          if (!popspotsConnection.ok()) {
-
-          }
       }
 
       func();
@@ -88,7 +84,8 @@ export default function CreatePopSpot() {
 
       func2();
 
-      window.location.href = "syracuse";
+      
+      setTimeout(window.location.href = "syracuse", 2000);
   };
 
   // const languages = [
