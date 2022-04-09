@@ -44,7 +44,8 @@ export default class App extends Component {
                   <Route exact path="/signin" element={<SignInSide />} />
                   <Route exact path="/signup" element={<SignUp />} />
                   <Route exact path="/forgotpassword" element={<ForgotPassword />} />
-                  <Route path="/settings" element={<Settings/>} />
+                  <Route path="/settings" element={<Settings />} />
+                  <Route path="viewdetails/:id" element={<Settings />} />
                   
                   <Route exact path='/syracuse/dbbq' element={<ViewpageDBBQ/>} />
                   <Route exact path='/syracuse/delmonicos' element={<ViewpageDelmonico />} />
