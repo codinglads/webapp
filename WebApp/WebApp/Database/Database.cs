@@ -15,8 +15,8 @@ namespace WebApp.Database
             Connection = DatabaseConnection.GetConnection();
             Tables = new List<Table>()
             {
-                new A_Accounts()
-
+                new A_Accounts(),
+                new S_SequenceCodes()
             };
         }
 

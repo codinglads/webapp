@@ -53,7 +53,10 @@ export default function CreatePopSpot() {
       const desc = formdata.get('description');
       const link = formdata.get('link');
       const slug = (title.split(' ')[0]).toLowerCase();
-      
+
+      //fetch('api/getspotid').then((response) => {
+
+      //});
 
       /// This is where the query needs to be run
       /// You can use the variables above to build it

@@ -9,6 +9,7 @@ using (Database db = new Database())
     if (DEVELOPMENT) db.DeleteTables();
     db.InitializeTables();
     db.BuildTables();
+    //if (DEVELOPMENT) db.UpdateSequence();
 }
 
 #endregion
