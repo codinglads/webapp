@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import * as React from 'react';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
-import  LandingPage  from './landingpage.js';
+import { LandingPage }  from './landingpage.js';
 
 function Copyright(props) {
     return (
@@ -46,6 +46,8 @@ export default function Syracuse() {
               description
               link
               slug
+              class
+              iden
               author {
                 bio
                 name
