@@ -11,6 +11,7 @@ import Comments from './Comments';
 import Container from '@mui/material/Container';
 import Rating from '@mui/material/Rating';
 import StarIcon from '@mui/icons-material/Star';
+import { request } from 'graphql-request';
 
 
 function Copyright(props) {
@@ -47,6 +48,8 @@ class ViewDetails extends Component {
 
         this.state = {
             id: idVal,
+            loading: 'true',
+            post: null,
         };
     }
 
@@ -66,9 +69,31 @@ class ViewDetails extends Component {
             }
         };
 
-        const queryByID = async (event) => {
+        var oneQuery = 'query GetOnePopspot{'
+        oneQuery = oneQuery + 'popspotsConnection(where: { iden: ' + this.state.id;
+        oneQuery = oneQuery + ' }) { edges { node { createdAt title description imageUrl class } } } }'
+    
+        if (this.state.loading === 'true') {
+            const queryByID = async (event) => {
+                var data = await request(
+                    'https://api-us-east-1.graphcms.com/v2/cl0y82ax546kp01z3hw2kc6ab/master',
+                    oneQuery
+                );
 
-        };
+                await this.setState({
+                    loading: 'false',
+                    post: data.popspotsConnection.edges[0].node,
+                });
+            };
+
+            queryByID();
+        }
+
+        if (this.state.loading === 'true') {
+            return (<Layout>Loading...</Layout>);
+        }
+
+        console.log(this.state.post);
 
         return (
             <Layout>
@@ -81,7 +106,7 @@ class ViewDetails extends Component {
                             sm={4}
                             md={7}
                             sx={{
-                                backgroundImage: 'url(/images/mysterytree.jpg)',
+                                backgroundImage: `url(${this.state.post.imageUrl})`,
                                 backgroundRepeat: 'no-repeat',
                                 backgroundColor: (t) =>
                                     t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
@@ -96,19 +121,20 @@ class ViewDetails extends Component {
                                 variant="h2"
                                 align="left"
                                 color="text.primary"
-                            ><strong>Title</strong></Typography>
+                            ><strong>{this.state.post.title}</strong></Typography>
                             <Rating name="spotRating" icon={<StarIcon sx={{ color: "primary" }} />} defaultValue={0} precision={0.5} />
                             <Typography variant="body1">
-                                This is where the description of this spot would go so that everybody could see it.
+                                {this.state.post.description}
                             </Typography>
-                            <Comments/>
+                            <Comments />
                         </Container>
-                        
+
                     </Grid>
-                    
+
                 </ThemeProvider>
             </Layout>
         );
+
     }
 }
 
