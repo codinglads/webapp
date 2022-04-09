@@ -48,11 +48,12 @@ export default function CreatePopSpot() {
     event.preventDefault();
     const formdata = new FormData(event.currentTarget);
       const city = formdata.get('city');
-      const state = formdata.get('state');
+      const clas = formdata.get('class');
       const title = formdata.get('title');
       const desc = formdata.get('description');
       const link = formdata.get('link');
       const slug = (title.split(' ')[0]).toLowerCase();
+      
 
       /// This is where the query needs to be run
       /// You can use the variables above to build it
@@ -64,10 +65,11 @@ export default function CreatePopSpot() {
       bigQuery = bigQuery + '", $link: String = "' + link;
       bigQuery = bigQuery + '", $imageUrl: String = "' + city;
       bigQuery = bigQuery + '", $slug: String = "' + slug;
-      bigQuery = bigQuery + '") {createPopspot(data: { title: $title, description: $description, link: $link, imageUrl: $imageUrl, slug: $slug }) {';
-      bigQuery = bigQuery + 'title description link imageUrl slug} }';
+      bigQuery = bigQuery + '", $class: String = "' + clas;
+      bigQuery = bigQuery + '") {createPopspot(data: { title: $title, description: $description, link: $link, imageUrl: $imageUrl, slug: $slug, class: $class }) {';
+      bigQuery = bigQuery + 'title description link imageUrl slug class} }';
 
-      var publishQuery = 'mutation publishMutation { publishManyPopspotsConnection(last: 1) { edges { node { description imageUrl link title slug} } }  }';
+      var publishQuery = 'mutation publishMutation { publishManyPopspotsConnection(last: 1) { edges { node { description imageUrl link title slug class} } }  }';
       
       const func = async () => {
           const popspotsConnection = await request(
@@ -85,7 +87,7 @@ export default function CreatePopSpot() {
       func2();
 
       
-      setTimeout(window.location.href = "syracuse", 2000);
+     // setTimeout(window.location.href = "syracuse", 2000);
   };
 
   // const languages = [
@@ -152,11 +154,15 @@ export default function CreatePopSpot() {
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
-                <TextField
-                  required
-                  fullWidth
-                  id="state"
-                  label="State"/> 
+              
+                        <select class="form-control form-control-lg" id="class" name="class" required placeholder="Password" label="Category" >
+                    <option>select category...</option>
+                     <option>Resturaunts</option>
+                     <option>Attractions</option>
+                     <option>Hotels</option>
+                     
+                    
+                  </select>
               </Grid>
               <Grid item xs={12}>
                 <TextField
