@@ -193,7 +193,7 @@ export class LandingPage extends Component {
                                         </CardContent>
                                         <CardActions>
 
-                                            <Link href={`/syracuse/${post.node.slug}`}> View </Link>
+                                            <Link href={`/viewdetails/${post.node.iden}`}> View </Link>
 
 
                                         </CardActions>
