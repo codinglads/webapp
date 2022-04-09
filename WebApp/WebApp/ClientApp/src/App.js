@@ -18,7 +18,7 @@ import { Counter } from './components/Counter';
 import Syracuse from './components/Syracuse/Syracuse';
 import Settings from './pages/SettingsPage';
 import CreatePopSpot from './components/Syracuse/createpopspot'
-import ViewpageDBBQ from './components/Syracuse/ViewpageDBBQ';
+import { ViewpageDBBQ } from './components/Syracuse/ViewpageDBBQ';
 import ViewpageBDBC from './components/Syracuse/ViewpageBDBC';
 import ViewpageDelmonico from './components/Syracuse/ViewpageDelmonico';
 import ViewpageStellas from './components/Syracuse/ViewpageStellas';
