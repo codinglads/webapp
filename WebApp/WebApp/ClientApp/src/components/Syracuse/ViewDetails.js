@@ -1,23 +1,17 @@
 import * as React from 'react';
 import { Component } from 'react';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
-import Paper from '@mui/material/Paper';
-import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Home from '../Home';
+import { useParams } from 'react-router-dom';
 import { Layout } from '../Layout';
-import Comments from './Comments'
+import Comments from './Comments';
+import Container from '@mui/material/Container';
 import Rating from '@mui/material/Rating';
 import StarIcon from '@mui/icons-material/Star';
+
 
 function Copyright(props) {
     return (
@@ -40,12 +34,19 @@ const theme = createTheme({
     }
 });
 
-export class ViewpageDBBQ extends Component {
+function withParams(Component) {
+    return props => <Component {...props} params={useParams()} />;
+}
+
+class ViewDetails extends Component {
 
     constructor(props) {
         super(props);
+
+        var { idVal } = this.props.params;
+
         this.state = {
-            validLogin: 'false'
+            id: idVal,
         };
     }
 
@@ -65,11 +66,9 @@ export class ViewpageDBBQ extends Component {
             }
         };
 
-        if (this.state.validLogin == 'true') {
-            return (
-                <Home />
-            );
-        }
+        const queryByID = async (event) => {
+
+        };
 
         return (
             <Layout>
@@ -91,11 +90,26 @@ export class ViewpageDBBQ extends Component {
                                 height: '80%'
                             }}
                         />
-   
-                        <Comments />
+                        <Container maxWidth="xs">
+                            <Typography
+                                component="h1"
+                                variant="h2"
+                                align="left"
+                                color="text.primary"
+                            ><strong>Title</strong></Typography>
+                            <Rating name="spotRating" icon={<StarIcon sx={{ color: "primary" }} />} defaultValue={0} precision={0.5} />
+                            <Typography variant="body1">
+                                This is where the description of this spot would go so that everybody could see it.
+                            </Typography>
+                            <Comments/>
+                        </Container>
+                        
                     </Grid>
+                    
                 </ThemeProvider>
             </Layout>
         );
     }
 }
+
+export default withParams(ViewDetails);

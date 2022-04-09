@@ -3,17 +3,14 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
 import Link from '@mui/material/Link';
 import Box from '@mui/material/Box';
 import CommentIcon from '@mui/icons-material/Comment';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import AttachmentIcon from '@mui/icons-material/Attachment';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { request } from 'graphql-request';
-import Rating from '@mui/material/Rating';
-import StarIcon from '@mui/icons-material/Star';
+import Grid from '@mui/material/Grid';
 
 
 
@@ -86,38 +83,6 @@ export default function Comments() {
         window.location.href = "syracuse";
     };
 
-    // const languages = [
-    //   {
-    //     value: 'Alabama',
-    //     label: 'Alabama',
-    //   },
-    //   {
-    //     value: 'Alaska',
-    //     label: 'Alaska',
-    //   },
-    //   {
-    //     value: 'Arizona',
-    //     label: 'Arizona',
-    //   },
-    //   {
-    //     value: 'Arkansas',
-    //     label: 'Arkansas',
-    //   },
-    //   {
-    //     value: 'California',
-    //     label: 'California',
-    //   },
-    //   {
-    //     value: 'Connecticut',
-    //     label: 'Connecticut',
-    //   },
-    // ];
-    // const [language, setLanguage] = React.useState('Alabama');
-
-    // const handleChange = (event) => {
-    //     setLanguage(event.target.value);
-    // };
-
     return (
 
         <ThemeProvider theme={theme}>
@@ -125,18 +90,12 @@ export default function Comments() {
                 <CssBaseline />
                 <Box
                     sx={{
-                        marginTop: 8,
+                        marginTop: 2,
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
                         justifyContent: "space-between"
                     }}>
-                    <Typography className="ratingTitleD" component="legend">Add Rating</Typography>
-                    <Rating name="spotRating" icon={<StarIcon sx={{ color: "black"}} />} defaultValue={0} precision={0.5} />
-                    <p>Enter Discription here.</p>
-
-
-
                     <Avatar sx={{ m: 1, bgcolor: "#7bda57" }}>
                         <CommentIcon />
                     </Avatar>

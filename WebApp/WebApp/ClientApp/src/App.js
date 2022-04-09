@@ -11,14 +11,13 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
-import { Layout } from './components/Layout';
+import ViewDetails from './components/Syracuse/ViewDetails';
 import  Home  from './components/Home';
 import { FetchData } from './components/FetchData';
 import { Counter } from './components/Counter';
 import Syracuse from './components/Syracuse/Syracuse';
 import Settings from './pages/SettingsPage';
 import CreatePopSpot from './components/Syracuse/createpopspot'
-import { ViewpageDBBQ } from './components/Syracuse/ViewpageDBBQ';
 import ViewpageBDBC from './components/Syracuse/ViewpageBDBC';
 import ViewpageDelmonico from './components/Syracuse/ViewpageDelmonico';
 import ViewpageStellas from './components/Syracuse/ViewpageStellas';
@@ -45,9 +44,8 @@ export default class App extends Component {
                   <Route exact path="/signup" element={<SignUp />} />
                   <Route exact path="/forgotpassword" element={<ForgotPassword />} />
                   <Route path="/settings" element={<Settings />} />
-                  <Route path="viewdetails/:id" element={<Settings />} />
+                  <Route path="viewdetails/:idVal" element={<ViewDetails />} />
                   
-                  <Route exact path='/syracuse/dbbq' element={<ViewpageDBBQ/>} />
                   <Route exact path='/syracuse/delmonicos' element={<ViewpageDelmonico />} />
                   <Route exact path='/syracuse/bigditchbrewery' element={<ViewpageBDBC />} />
                   <Route exact path='/syracuse/title' element={<ViewpageTest />} />
