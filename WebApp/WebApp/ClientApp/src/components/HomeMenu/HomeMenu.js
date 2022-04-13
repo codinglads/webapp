@@ -14,6 +14,7 @@ import { Link } from 'react-router-dom';
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
+// Theme colors
 const theme = createTheme({
     palette: {
         primary: {
@@ -22,6 +23,7 @@ const theme = createTheme({
     }
 });
 
+// This component renders the home menu drop down and was generated with MUI
 export default function HomeMenu() {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
@@ -113,49 +115,3 @@ export default function HomeMenu() {
         </ThemeProvider>
     );
 }
-
-
-/*import React, { Component } from 'react';
-
-import './HomeMenu.css';
-import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
-
-export class HomeMenu extends Component {
-    static displayName = HomeMenu.name;
-
-
-
-
-    render() {
-        return (
-            <div id="HomeMenuContainer">
-                <MenuRoundedIcon fontSize="large"/>
-            </div>
-        );
-    }
-}
-
-
-<Typography sx={{ minWidth: 100 }}>
-                        <Link to="/syracuse" style={{
-                            textDecoration: 'none',
-                            color: 'black',
-                            fontWeight: 'bold'
-                        }}>Syracuse</Link>
-                 </Typography>
-                 <Typography sx={{ minWidth: 100 }}>
-                    <Link to="/counter" style={{
-                        textDecoration: 'none',
-                            color: 'black',
-                            fontWeight: 'bold'
-                    }}>Counter</Link>
-                </Typography>
-                <Typography sx={{ minWidth: 100 }}>
-                    <Link to="/fetch-data" style={{
-                        textDecoration: 'none',
-                            color: 'black',
-                            fontWeight: 'bold'
-                    }}>Fetch Data</Link>
-                </Typography>
-
-*/

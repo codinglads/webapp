@@ -2,6 +2,10 @@
 
 namespace WebApp.Controllers
 {
+    /// <summary>
+    /// This controller came with the default starting project made by Microsoft Visual Studio
+    /// It is not used in our project
+    /// </summary>
     [ApiController]
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase

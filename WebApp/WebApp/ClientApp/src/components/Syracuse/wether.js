@@ -1,5 +1,6 @@
 import ReactWeather, { useOpenWeather } from 'react-open-weather';
 
+// This component generates the weather data via a react weather api
 export default function App (){
     const { data, isLoading, errorMessage } = useOpenWeather({
         key: '9dada905df54da75a8b18131faf94fb1',

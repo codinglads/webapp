@@ -1,4 +1,6 @@
-﻿#homepagepic {
+﻿/*CSS for the home page*/
+
+#homepagepic {
     position: fixed;
     width: 100%;
     height: 100%;
@@ -11,9 +13,7 @@
     font-style: italic;
     z-index: 2;
 }
-/* #locationsearch{
-    background-color: white;
-}  */
+
 
 #explorebtn {
     background-color: #7bda57;

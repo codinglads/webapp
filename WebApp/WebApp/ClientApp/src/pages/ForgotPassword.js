@@ -11,6 +11,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Layout } from '../components/Layout';
 
+// Copyright stamp
 function Copyright(props) {
     return (
             <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -24,6 +25,7 @@ function Copyright(props) {
     );
 }
 
+// Theme colors
 const theme = createTheme({
     palette: {
         primary: {
@@ -32,7 +34,10 @@ const theme = createTheme({
     }
 });
 
+// This component renders our forgot password page, generated with MUI
 export default function ForgotPassword() {
+
+    // This handles the email form submission
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);

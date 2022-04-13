@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import { LandingPage }  from './landingpage.js';
 
+// Copywright stamp
 function Copyright(props) {
     return (
         <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -20,6 +21,7 @@ function Copyright(props) {
     );
 }
 
+// Theme colors
 const theme = createTheme({
     palette: {
         primary: {
@@ -29,14 +31,12 @@ const theme = createTheme({
 });
 const cards = [1, 2, 3,];
 
-
-
-
+// This component renders the syracuse page and all its corresponding tiles
 export default function Syracuse() {
    
-
     const [popspotsConnection, setPopSpots] = useState(null);
-    
+
+    // Query string to find tiles
     var bigQuery = `{
         popspotsConnection {
           edges {
@@ -71,23 +71,15 @@ export default function Syracuse() {
         
     `
     var bigQueryString = bigQuery.replace(/\n/g, ' ');
-   
 
+    // Grabs the cards using the query
     useEffect(() => {
         const getPop = async () => {
             const { popspotsConnection } = await request(
                 'https://api-us-east-1.graphcms.com/v2/cl0y82ax546kp01z3hw2kc6ab/master',
+                bigQueryString);
 
-         
-                bigQueryString
-
-                
-        
-            );
-            setPopSpots(popspotsConnection)
-          //  console.log(popspotsConnection);
-
-            
+            setPopSpots(popspotsConnection) 
         };
 
         getPop();
@@ -96,13 +88,9 @@ export default function Syracuse() {
     const cards = [1, 2, 3,];
 
     const theme = createTheme();
-  
-    //setTimeout(function[, 3000, console.log(popspotsConnection)]);
-    //
+    // Renders if the connection is successful
     if (popspotsConnection != null) {
-        
         var posts = [popspotsConnection][0].edges;
-       
        
         return (
             <Layout>
@@ -118,13 +106,5 @@ export default function Syracuse() {
                 </ThemeProvider>
             </Layout>
         );
-
     }
-
-
 }
-
-
-//
-
-

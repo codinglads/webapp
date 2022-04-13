@@ -9,8 +9,11 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import { Layout } from '../components/Layout';
 
+
+// This component renders the settings page
 function SettingsPage(){
 
+    // Theme colors
     const theme = createTheme ({
         palette: {
           primary: {
@@ -19,6 +22,7 @@ function SettingsPage(){
         },
       });
 
+    // Possbile languages
     const languages = [
         {
             value: 'English',

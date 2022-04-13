@@ -1,18 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-//1. import System.Data.SqlClient
 using System.Data.SqlClient;
 using WebApp.Database;
 
 
-
+/// <summary>
+/// This class was used to play with accessing the SQL Server database when
+/// attempting to sign in or sign up for an account
+/// 
+/// It is not used in our project
+/// </summary>
 public class Login_signup{ 
     public void CheckCredentials(){
     Database db = new Database();

@@ -13,7 +13,7 @@ import Rating from '@mui/material/Rating';
 import StarIcon from '@mui/icons-material/Star';
 import { request } from 'graphql-request';
 
-
+// Copywright stamp
 function Copyright(props) {
     return (
         <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -27,6 +27,7 @@ function Copyright(props) {
     );
 }
 
+// Theme colors
 const theme = createTheme({
     palette: {
         primary: {
@@ -35,12 +36,15 @@ const theme = createTheme({
     }
 });
 
+// Maps url parameters to properties on component
 function withParams(Component) {
     return props => <Component {...props} params={useParams()} />;
 }
 
+// This class renders a details page for a specific card on the landing page
 class ViewDetails extends Component {
 
+    // Builds state using the url param id of the card selected
     constructor(props) {
         super(props);
 
@@ -54,25 +58,14 @@ class ViewDetails extends Component {
     }
 
     render() {
-        const handleSubmit = async (event) => {
-            event.preventDefault();
-            const data = new FormData(event.currentTarget);
-            const email = data.get('email');
-            const password = data.get('password');
 
-            const response = await fetch('api/signin?email=' + email + '&password=' + password);
-
-            if (response.ok) {
-                this.setState({ validLogin: 'true' });
-            } else {
-                window.location.href = '404';
-            }
-        };
-
+        // Builds query to find details on specific card selection
         var oneQuery = 'query GetOnePopspot{'
         oneQuery = oneQuery + 'popspotsConnection(where: { iden: ' + this.state.id;
         oneQuery = oneQuery + ' }) { edges { node { createdAt title description imageUrl class } } } }'
-    
+
+        // Using the components state, it checks if the state is loading, if so it grabs the data from
+        // graphQL and sets the state to not longer be loading as well as to conatain the details data
         if (this.state.loading === 'true') {
             const queryByID = async (event) => {
                 var data = await request(
@@ -89,12 +82,12 @@ class ViewDetails extends Component {
             queryByID();
         }
 
+        // If state is loading then show a loading symbol
         if (this.state.loading === 'true') {
             return (<Layout>Loading...</Layout>);
         }
 
-        console.log(this.state.post);
-
+        // Otherwise display details using the state's post prop
         return (
             <Layout>
                 <ThemeProvider theme={theme}>

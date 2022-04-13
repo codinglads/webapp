@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";//import { Route } from 'react-router';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import { SignInSide } from "./pages/SignInSide";
 import SignUp from "./pages/SignUp";
@@ -18,18 +18,13 @@ import { Counter } from './components/Counter';
 import Syracuse from './components/Syracuse/Syracuse';
 import Settings from './pages/SettingsPage';
 import CreatePopSpot from './components/Syracuse/createpopspot'
-import ViewpageBDBC from './components/Syracuse/ViewpageBDBC';
-import ViewpageDelmonico from './components/Syracuse/ViewpageDelmonico';
-import ViewpageStellas from './components/Syracuse/ViewpageStellas';
-import ViewpageTest from './components/Syracuse/ViewpageTest';
 
 import './custom.css'
 
+
+// This sets up the basic routing and pages for our react app
 export default class App extends Component {
     static displayName = App.name;
-
-
-
 
   render () {
       return (
@@ -45,11 +40,6 @@ export default class App extends Component {
                   <Route exact path="/forgotpassword" element={<ForgotPassword />} />
                   <Route path="/settings" element={<Settings />} />
                   <Route path="viewdetails/:idVal" element={<ViewDetails />} />
-                  
-                  <Route exact path='/syracuse/delmonicos' element={<ViewpageDelmonico />} />
-                  <Route exact path='/syracuse/bigditchbrewery' element={<ViewpageBDBC />} />
-                  <Route exact path='/syracuse/title' element={<ViewpageTest />} />
-                  <Route exact path='/syracuse/stellany' element={<ViewpageStellas />} />
                   <Route path="*" element={<ErrorPage />} />
 
               </Routes>

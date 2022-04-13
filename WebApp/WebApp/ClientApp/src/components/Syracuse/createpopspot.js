@@ -15,10 +15,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { request } from 'graphql-request';
 import { Layout } from '../Layout';
 
-
+// Copywright stamp
 function Copyright(props) {
-
-
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
@@ -31,10 +29,7 @@ function Copyright(props) {
   );
 }
 
-//function isImage(url) {
-  //  return /^https?:\/\/.+\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(url);
-//}
-
+// Theme colors
 const theme = createTheme({
     palette: {
         primary: {
@@ -43,7 +38,11 @@ const theme = createTheme({
     }
 });
 
+// This component renders the page where your able to add a popular spot
 export default function CreatePopSpot() {
+
+  // This handles the add spot button submission by grabbing the formdata and reaching out
+  // to graphQL and attempting to mutate the online database
   const handleSubmit = (event) => {
     event.preventDefault();
     const formdata = new FormData(event.currentTarget);
@@ -54,15 +53,7 @@ export default function CreatePopSpot() {
       const link = formdata.get('link');
       const slug = (title.split(' ')[0]).toLowerCase();
 
-      //fetch('api/getspotid').then((response) => {
-
-      //});
-
-      /// This is where the query needs to be run
-      /// You can use the variables above to build it
-      ///
-      ///
-      ///
+      // Builds the mutation query using the formdata
       var bigQuery = 'mutation MyMutation($title: String = "' + title;
       bigQuery = bigQuery + '", $description: String = "' + desc;
       bigQuery = bigQuery + '", $link: String = "' + link;
@@ -77,7 +68,6 @@ export default function CreatePopSpot() {
       const func = async () => {
           const popspotsConnection = await request(
               'https://api-us-east-1.graphcms.com/v2/cl0y82ax546kp01z3hw2kc6ab/master', bigQuery);
-
       }
 
       func();
@@ -88,142 +78,104 @@ export default function CreatePopSpot() {
       }
 
       func2();
-
-      
-     // setTimeout(window.location.href = "syracuse", 2000);
   };
 
-  // const languages = [
-  //   {
-  //     value: 'Alabama',
-  //     label: 'Alabama',
-  //   },
-  //   {
-  //     value: 'Alaska',
-  //     label: 'Alaska',
-  //   },
-  //   {
-  //     value: 'Arizona',
-  //     label: 'Arizona',
-  //   },
-  //   {
-  //     value: 'Arkansas',
-  //     label: 'Arkansas',
-  //   },
-  //   {
-  //     value: 'California',
-  //     label: 'California',
-  //   },
-  //   {
-  //     value: 'Connecticut',
-  //     label: 'Connecticut',
-  //   },
-  // ];
-  // const [language, setLanguage] = React.useState('Alabama');
-  
-  // const handleChange = (event) => {
-  //     setLanguage(event.target.value);
-  // };
 
     return (
       <Layout>
-    <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}>
-          <Avatar sx={{ m: 1, bgcolor: "#7bda57" }}>
-            <BackpackIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Add a popular spot
-          </Typography>
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
-            <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  autoComplete="given-city"
-                  name="city"
-                  required
-                  fullWidth
-                  id="city"
-                  label="Image Address"
-                  autoFocus
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-              
-                        <select class="form-control form-control-lg" id="class" name="class" required placeholder="Password" label="Category" >
-                    <option>select category...</option>
-                     <option>Resturaunts</option>
-                     <option>Attractions</option>
-                     <option>Hotels</option>
-                     
-                    
-                  </select>
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  multiline
-                  fullWidth
-                  id="title"
-                  label="Title"
-                  name="title"
-                  autoComplete="title"
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  multiline
-                  fullWidth
-                  id="description"
-                  label="Description of Spot"
-                  name="description"
-                  autoComplete="description"
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  name="link"
-                  label="Link to Website"
-                  type="link"
-                  id="link"
-                  autoComplete="link"
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <FormControlLabel
-                  control={<AttachmentIcon value="allowAttachments" color="primary" />}
-                  label="Upload Image"
-                />
-              </Grid>
-            </Grid>
-            <Grid container alignItems="center">
-               <Grid container justifyContent="flex-start" xs={6}>
-                  <Button type="submit" halfWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
-                     Submit Post
-                  </Button>
-               </Grid>
-               <Grid container justifyContent="flex-end" xs={6}>
-                    <Link href="/" variant="body2">
-                        Cancel
-                    </Link>
-              </Grid>
-            </Grid>
-          </Box>
-        </Box>
-        <Copyright sx={{ mt: 5 }} />
-      </Container>
-    </ThemeProvider>
-            </ Layout>
-            );
+        <ThemeProvider theme={theme}>
+            <Container component="main" maxWidth="xs">
+                <CssBaseline />
+                <Box sx={{
+                    marginTop: 8,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                }}>
+                    <Avatar sx={{ m: 1, bgcolor: "#7bda57" }}>
+                        <BackpackIcon />
+                    </Avatar>
+                    <Typography component="h1" variant="h5">
+                            Add a popular spot
+                    </Typography>
+                    <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+                        <Grid container spacing={2}>
+                            <Grid item xs={12} sm={6}>
+                                <TextField
+                                  autoComplete="given-city"
+                                  name="city"
+                                  required
+                                  fullWidth
+                                  id="city"
+                                  label="Image Address"
+                                  autoFocus
+                                />
+                            </Grid>
+                            <Grid item xs={12} sm={6}>
+                                <select class="form-control form-control-lg" id="class" name="class" required placeholder="Password" label="Category" >
+                                    <option>select category...</option>
+                                    <option>Resturaunts</option>
+                                    <option>Attractions</option>
+                                    <option>Hotels</option>
+                                </select>
+                            </Grid>
+                            <Grid item xs={12}>
+                                <TextField
+                                  required
+                                  multiline
+                                  fullWidth
+                                  id="title"
+                                  label="Title"
+                                  name="title"
+                                  autoComplete="title"
+                                />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <TextField
+                                  required
+                                  multiline
+                                  fullWidth
+                                  id="description"
+                                  label="Description of Spot"
+                                  name="description"
+                                  autoComplete="description"
+                                />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <TextField
+                                  required
+                                  fullWidth
+                                  name="link"
+                                  label="Link to Website"
+                                  type="link"
+                                  id="link"
+                                  autoComplete="link"
+                                />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <FormControlLabel
+                                  control={<AttachmentIcon value="allowAttachments" color="primary" />}
+                                  label="Upload Image"
+                                />
+                            </Grid>
+                        </Grid>
+                        <Grid container alignItems="center">
+                            <Grid container justifyContent="flex-start" xs={6}>
+                                <Button type="submit" halfWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
+                                       Submit Post
+                                </Button>
+                            </Grid>
+                            <Grid container justifyContent="flex-end" xs={6}>
+                                <Link href="/" variant="body2">
+                                    Cancel
+                                </Link>
+                            </Grid>
+                        </Grid>
+                    </Box>
+                </Box>
+                <Copyright sx={{ mt: 5 }} />
+            </Container>
+        </ThemeProvider>
+      </ Layout>
+    );
 }

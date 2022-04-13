@@ -5,10 +5,23 @@ namespace WebApp.Controllers
 {
     using Database;
 
+    /// <summary>
+    /// This route accepts requests to 
+    /// ROOT_URL/api/signup?email=VAL1&password=VAL2&firstName=VAL3&lastName=VAL3
+    /// this then attempts to add the account to the database
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class SignUpController : ControllerBase
     {
+        /// <summary>
+        /// This method attempts to add the requests account info to the database
+        /// </summary>
+        /// <param name="email">Users email as a string</param>
+        /// <param name="password">Users password as a string</param>
+        /// <param name="firstName">Users first name as a string</param>
+        /// <param name="lastName">Users last name as a string</param>
+        /// <returns>Ok request if the insert is succesful otherwise BadRequest</returns>
         [HttpGet]
         public IActionResult Get(string email, string password, string firstName, string lastName)
         {

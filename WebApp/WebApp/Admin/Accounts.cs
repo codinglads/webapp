@@ -6,8 +6,19 @@ namespace WebApp.Admin
     using Database;
     using System.Text;
 
+    /// <summary>
+    /// This class is meant to hold all admin functions associated with accounts
+    /// This includes things like retrieving accounts from the database and updating
+    /// accounts in the database. We never ended up implementing any of these in our
+    /// project.
+    /// </summary>
+
     public static class Accounts
     {
+        /// <summary>
+        /// This method retrieves all accounts from the database
+        /// </summary>
+        /// <returns>An array of Account objects</returns>
         public static Account[] GetAccounts()
         {
             using (Database db = new Database())
@@ -38,6 +49,11 @@ namespace WebApp.Admin
             }
         }
     
+        /// <summary>
+        /// This method retrieves a specific account from the database
+        /// </summary>
+        /// <param name="accountid">This is the id of the account</param>
+        /// <returns>An account object</returns>
         public static Account GetAccount(int accountid)
         {
             using (Database db = new Database())
@@ -65,6 +81,10 @@ namespace WebApp.Admin
             }
         }
 
+        /// <summary>
+        /// This method updates an account in the database
+        /// </summary>
+        /// <param name="acct">Takes an Account object</param>
         public static void UpdateAccount(Account acct)
         {
             StringBuilder sb = new StringBuilder("UPDATE A_Accounts SET ");

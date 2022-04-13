@@ -18,6 +18,7 @@ import App from './wether.js';
 import { Component } from 'react';
 import './Syracuse.css';
 
+// Copywright stamp
 function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" align="center">
@@ -31,8 +32,7 @@ function Copyright() {
   );
 }
 
-
-
+// Theme colors
 const theme = createTheme({
     palette: {
         primary: {
@@ -45,6 +45,7 @@ const theme = createTheme({
     },
 });
 
+// This class helps render and style the location page for Syracuse
 export class LandingPage extends Component {
 
     constructor(props){
@@ -56,18 +57,21 @@ export class LandingPage extends Component {
 
     render() {
 
+        // Sets the component state to display restauraunts
         const onRestaurant = (event) => {
             this.setState({
                 spotClass: "Restaurants",
             });
         };
 
+        // Sets the component state to display hotels
         const onHotel = (event) => {
             this.setState({
                 spotClass: "Hotels",
             });
         };
 
+        // Sets the component state to display attractions
         const onAttraction = (event) => {
             this.setState({
                 spotClass: "Attractions"

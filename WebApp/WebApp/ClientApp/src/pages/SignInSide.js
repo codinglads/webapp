@@ -16,6 +16,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Home from '../components/Home';
 import { Layout } from '../components/Layout';
 
+// Copyrigth stamp
 function Copyright(props) {
     return (
         <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -29,6 +30,7 @@ function Copyright(props) {
     );
 }
 
+// Theme colors
 const theme = createTheme({
     palette: {
         primary: {
@@ -37,6 +39,7 @@ const theme = createTheme({
     }
 });
 
+// This class renders the sign in page using state to determine login
 export class SignInSide extends Component{
 
     constructor(props){
@@ -47,6 +50,8 @@ export class SignInSide extends Component{
     }
 
     render() {
+        // This handles a sign in attempt by passing the params to
+        // the C# backend
         const handleSubmit = async (event) => {
             event.preventDefault();
             const data = new FormData(event.currentTarget);
@@ -55,6 +60,7 @@ export class SignInSide extends Component{
 
             const response = await fetch('api/signin?email=' + email + '&password=' + password);
 
+            // If the data is not valid then redirect to 404 page
             if (response.ok) {
                 this.setState({ validLogin: 'true' });
             } else {
@@ -62,6 +68,7 @@ export class SignInSide extends Component{
             }
         };
 
+        // If its valid then send user to home page
         if (this.state.validLogin == 'true') {
             return (
                 <Home />

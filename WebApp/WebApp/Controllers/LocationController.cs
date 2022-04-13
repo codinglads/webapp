@@ -2,25 +2,20 @@
 
 namespace WebApp.Controllers
 {
+    /// <summary>
+    /// This route accepts a HttpGet request to ROOT_URL/api/location?loc=VALUE
+    /// VALUE gets mapped to string loc and this is used to determine if a specific
+    /// location exists when getting searched
+    /// </summary>
     [ApiController]
     [Route("api/[controller]")]
     public class LocationController : ControllerBase
     {
-        #region Public Methods
-
-        public string GetLocation(string location)
-        {
-            switch (location)
-            {
-                case "Syracuse":
-                    return "syracuse";
-                default:
-                    return "notfound";
-            }
-        }
-
-        #endregion
-
+        /// <summary>
+        /// If the location exists, return the path to it
+        /// </summary>
+        /// <param name="loc">Takes in the search string</param>
+        /// <returns>List of string where first element is the path</returns>
         [HttpGet]
         public IEnumerable<string> Get(string loc)
         {

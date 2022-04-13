@@ -1,9 +1,15 @@
 using WebApp.Database;
 
+/// <summary>
+/// Set this bool to true if you are developing, otherwise this should be set to false
+/// </summary>
 bool DEVELOPMENT = true;
 
 #region Database Building
 
+/// <summary>
+/// This section is used to build the database structure and connection
+/// </summary>
 using (Database db = new Database())
 {
     if (DEVELOPMENT) db.DeleteTables();
@@ -13,6 +19,11 @@ using (Database db = new Database())
 }
 
 #endregion
+
+/// <summary>
+/// The remainder of this code was built by microsoft to start up the project
+/// </summary>
+#region Built by Microsoft
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -48,3 +59,5 @@ app.MapControllerRoute(
 app.MapFallbackToFile("index.html"); ;
 
 app.Run();
+
+#endregion

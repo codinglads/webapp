@@ -1,5 +1,10 @@
 ﻿namespace WebApp.Database.Tables
 {
+    /// <summary>
+    /// This class is meant to represent the Sequence Code table in our database
+    /// This would help us generate new id's by remembering which id was used last
+    /// This has NOT been implemented in our project yet
+    /// </summary>
     public class S_SequenceCodes : Table
     {
         private const string tableName = "tableName varchar(50)";

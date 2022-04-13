@@ -1,5 +1,8 @@
 ﻿namespace WebApp.DataTypes
 {
+    /// <summary>
+    /// This class represents an account within our system
+    /// </summary>
     public class Account
     {
         public string username;

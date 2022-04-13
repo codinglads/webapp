@@ -1,4 +1,6 @@
-﻿#HomeMenuContainer{
+﻿/*CSS for the home menu drop down*/
+
+#HomeMenuContainer{
     display: flex;
     justify-content: center;
     align-items: center;

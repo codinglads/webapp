@@ -13,6 +13,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import { Layout } from '../components/Layout';
 
+// Copyright stamp
 function Copyright(props) {
     return (
             <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -26,6 +27,7 @@ function Copyright(props) {
     );
 }
 
+// Theme colors
 const theme = createTheme({
     palette: {
         primary: {
@@ -34,7 +36,10 @@ const theme = createTheme({
     }
 });
 
+// This component renders the signup page
 export default function SignUp() {
+
+    // Grabs form data and submits insert request to c# backend
     const handleSubmit = async (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
@@ -46,6 +51,7 @@ export default function SignUp() {
         const response = await fetch('api/signup?email=' + email + '&password=' + password +
             '&firstName=' + firstName + '&lastName=' + lastName);
 
+        // If its valid then redirect to sign in otherwise redirect to 404 page
         if (response.ok) {
             window.location.href = 'signin';
         } else {

@@ -7,10 +7,20 @@ namespace WebApp.Controllers
     using System.Text;
     using Database.Tables;
 
+    /// <summary>
+    /// This route accepts requests to ROOT_URL/api/signin?email=VALUE1&password=VALUE2
+    /// this takes the two input params and attemps to find a match in our database
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class SignInController : ControllerBase
     {
+        /// <summary>
+        /// Trys to match the sign in request with an account in our database
+        /// </summary>
+        /// <param name="email">Users email as a string</param>
+        /// <param name="password">Users password as a string</param>
+        /// <returns>Ok request if the sign in is successful, otherwise BadRequest</returns>
         [HttpGet]
         public IActionResult Login(string email, string password)
         {
@@ -26,11 +36,5 @@ namespace WebApp.Controllers
             }
             return BadRequest();
         }
-    }
-
-    public class LoginData
-    {
-        public string? username;
-        public string? password;
     }
 }

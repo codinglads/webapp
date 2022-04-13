@@ -9,16 +9,11 @@ import CommentIcon from '@mui/icons-material/Comment';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { request } from 'graphql-request';
-import Rating from '@mui/material/Rating';
-import StarIcon from '@mui/icons-material/Star';
 import Grid from '@mui/material/Grid';
 
 
-
+// Copywright stamp
 function Copyright(props) {
-
-
     return (
         <Typography variant="body2" color="text.secondary" align="center" {...props}>
             {'Copyright © '}
@@ -31,6 +26,7 @@ function Copyright(props) {
     );
 }
 
+// Theme colors
 const theme = createTheme({
     palette: {
         primary: {
@@ -39,54 +35,15 @@ const theme = createTheme({
     }
 });
 
+// This component renders the comment section when you view a spot page
 export default function Comments() {
+
+    // Handles a comment submit but is currently not implemented
     const handleSubmit = (event) => {
         event.preventDefault();
-        const formdata = new FormData(event.currentTarget);
-        const city = formdata.get('city');
-        const state = formdata.get('state');
-        const title = formdata.get('title');
-        const desc = formdata.get('description');
-        const link = formdata.get('link');
-
-        /// This is where the query needs to be run
-        /// You can use the variables above to build it
-        ///
-        ///
-        ///
-        var bigQuery = 'mutation MyMutation($title: String = "' + title;
-        bigQuery = bigQuery + '", $description: String = "' + desc;
-        bigQuery = bigQuery + '", $link: String = "' + link;
-        bigQuery = bigQuery + '", $imageUrl: String = "' + 'http://www.google.com/';
-        bigQuery = bigQuery + '") {createPopspot(data: { title: $title, description: $description, link: $link, imageUrl: $imageUrl }) {';
-        bigQuery = bigQuery + 'title description link imageUrl } }';
-
-        var publishQuery = 'mutation MyMutation {publishManyPopspotsConnection { edges { node {' +
-            'description imageUrl link title } } } }';
-
-        const func = async () => {
-            const popspotsConnection = await request(
-                'https://api-us-east-1.graphcms.com/v2/cl0y82ax546kp01z3hw2kc6ab/master', bigQuery);
-
-            if (!popspotsConnection.ok()) {
-
-            }
-        }
-
-        func();
-
-        func = async () => {
-            const popSPotPub = await request(
-                'https://api-us-east-1.graphcms.com/v2/cl0y82ax546kp01z3hw2kc6ab/master', publishQuery);
-        }
-
-        func();
-
-        window.location.href = "syracuse";
     };
 
     return (
-
         <ThemeProvider theme={theme}>
             <Container component="main" maxWidth="xs">
                 <CssBaseline />

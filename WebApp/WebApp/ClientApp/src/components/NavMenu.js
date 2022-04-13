@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import './NavMenu.css';
 import HomeMenu from './HomeMenu/HomeMenu';
 
+// This class renders the navigation menu at the top of the page
 export class NavMenu extends Component {
   static displayName = NavMenu.name;
 
@@ -16,6 +17,7 @@ export class NavMenu extends Component {
     };
   }
 
+  // Determines if the menu needs to be a hamburger button instead
   toggleNavbar () {
     this.setState({
       collapsed: !this.state.collapsed
@@ -42,18 +44,3 @@ export class NavMenu extends Component {
     );
   }
 }
-
-/*
- <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/">Home</NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/counter">Counter</NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/fetch-data">Fetch data</NavLink>
-                </NavItem>
-                                <NavItem>
-                    <NavLink tag={Link} className="text-dark" to="/signin">Sign In</NavLink>
-                </NavItem>
- */

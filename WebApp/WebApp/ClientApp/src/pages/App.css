@@ -1,5 +1,7 @@
 ﻿@import url(https://fonts.googleapis.com/css?family=Gilda+Display);
 
+/*CSS for the general app*/
+
 .center-image {
     display: flex;
     justify-content: center;

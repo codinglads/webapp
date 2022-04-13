@@ -1,7 +1,13 @@
 ﻿namespace WebApp.Database.Tables
 {
+    /// <summary>
+    /// This class represents the account table in our sql database
+    /// </summary>
     public class A_Accounts : Table
     {
+        /// <summary>
+        /// These are the column descriptions for all cols in database
+        /// </summary>
         private const string username = "username varchar(50)";
         private const string password = "password varchar(50)";
         private const string accountid = "accountid int";
@@ -11,6 +17,9 @@
         private const string address = "address varchar(75)";
         private const string local = "local varchar(10)";
 
+        /// <summary>
+        /// These are the indexes (aka which column #)
+        /// </summary>
         #region Column Indexes
 
         public const int _username_ = 0;
@@ -24,6 +33,9 @@
 
         #endregion
 
+        /// <summary>
+        /// Returns name of the table in database
+        /// </summary>
         public override string Name
         {
             get
@@ -32,6 +44,10 @@
             }
         }
 
+        /// <summary>
+        /// Returns a list of all of the column descriptions
+        /// This is used to build the database
+        /// </summary>
         public override string[] Columns
         {
             get

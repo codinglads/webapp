@@ -5,8 +5,14 @@ using WebApp.Database.Tables;
 
 namespace WebApp.Database
 {
+    /// <summary>
+    /// This class represents the object version of our database in this system
+    /// </summary>
     public class Database : IDisposable
-    {
+    { 
+        /// <summary>
+        /// Connection to Database and list of tables in database
+        /// </summary>
         public SqlConnection Connection;
         public List<Table> Tables;
 
@@ -20,6 +26,9 @@ namespace WebApp.Database
             };
         }
 
+        /// <summary>
+        /// Recommended to close database connections
+        /// </summary>
         public void Dispose()
         {
             if (Connection != null && Connection.State == ConnectionState.Open)
@@ -56,6 +65,10 @@ namespace WebApp.Database
             return data;
         }
 
+        /// <summary>
+        /// This method is a general idea for updating the SQL Database
+        /// </summary>
+        /// <param name="update_string">String to be sent to SQL Command</param>
         public void Update(string update_string)
         {
             Connection.Open();
@@ -65,7 +78,12 @@ namespace WebApp.Database
             Connection.Close();
         }
 
+        /// <summary>
+        /// The following methods are used to build the database when running the application
+        /// </summary>
         #region Database Table Building
+        
+        /// Adds table classes to Tables property above
         public void InitializeTables()
         {
             List<Table> tables = new List<Table>();
@@ -75,6 +93,9 @@ namespace WebApp.Database
             Tables = tables;
         }
         
+        /// <summary>
+        /// Checks if the table already exists, if not it creates it
+        /// </summary>
         public void BuildTables()
         {
             Connection.Open();
@@ -107,6 +128,9 @@ namespace WebApp.Database
             Connection.Close();
         }
         
+        /// <summary>
+        /// Method is not currently used in project
+        /// </summary>
         public void VerifyColums()
         {
             Connection.Open();
@@ -134,6 +158,11 @@ namespace WebApp.Database
             Connection.Close();
         }
         
+        /// <summary>
+        /// In DEBUG mode the following method will delete all existing tables and 
+        /// rebuild them from scratch. This is a simple way to account for new columns
+        /// being added to existing tables while developing
+        /// </summary>
         public void DeleteTables()
         {
             Connection.Open();

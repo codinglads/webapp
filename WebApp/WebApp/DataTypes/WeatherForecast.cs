@@ -1,5 +1,9 @@
 namespace WebApp
 {
+    /// <summary>
+    /// This class was generated using the Microsoft Visual Studio create react app
+    /// It is not used in our project
+    /// </summary>
     public class WeatherForecast
     {
         public DateTime Date { get; set; }
